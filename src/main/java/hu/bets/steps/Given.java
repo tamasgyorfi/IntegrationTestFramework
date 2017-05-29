@@ -58,8 +58,8 @@ public class Given {
 
     private static void setupBroker() {
 
-        String config = Thread.currentThread().getContextClassLoader().getResource("amqp_config.json").getPath();
-        String keystore = Thread.currentThread().getContextClassLoader().getResource("clientkeystore").getPath();
+        String config = Thread.currentThread().getContextClassLoader().getResource("amqp_config.json").toExternalForm();
+        String keystore = Thread.currentThread().getContextClassLoader().getResource("clientkeystore").toExternalForm();
 
         final BrokerOptions brokerOptions = new BrokerOptions();
         brokerOptions.setConfigProperty("qpid.amqp_port", "11000");
