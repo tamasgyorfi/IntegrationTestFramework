@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hu.bets</groupId>
     <artifactId>football-integration-test</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <scm>
         <url>https://github.com/tamasgyorfi/IntegrationTestFramework.git</url>
         <connection>scm:git:git@github.com:tamasgyorfi/IntegrationTestFramework.git</connection>
         <developerConnection>scm:git:git@github.com:tamasgyorfi/IntegrationTestFramework.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>football-integration-test-0.0.1</tag>
     </scm>
 
     <properties>
@@ -179,6 +178,16 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <releaseProfiles>release</releaseProfiles>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
