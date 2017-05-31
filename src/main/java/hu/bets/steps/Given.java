@@ -3,7 +3,6 @@ package hu.bets.steps;
 import com.mongodb.client.MongoCollection;
 import com.rabbitmq.client.Channel;
 import hu.bets.common.messaging.MessageListener;
-import hu.bets.common.util.EnvironmentVarResolver;
 import hu.bets.steps.util.ApplicationContextHolder;
 import org.apache.qpid.server.Broker;
 import org.apache.qpid.server.BrokerOptions;
