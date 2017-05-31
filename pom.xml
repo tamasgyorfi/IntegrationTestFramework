@@ -169,23 +169,4 @@
         </plugins>
     </build>
 
-
-    <distributionManagement>
-        <repository>
-            <id>myMavenRepo.write</id>
-            <url>${myMavenRepo.write.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>myMavenRepo.write</id>
-            <url>${myMavenRepo.write.url}</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>myMavenRepo.read</id>
-            <url>${myMavenRepo.read.url}</url>
-        </repository>
-    </repositories>
-
 </project>
