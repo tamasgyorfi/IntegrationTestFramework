@@ -169,4 +169,12 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>bintray-tamasgyorfi-maven</id>
+            <name>tamasgyorfi-maven</name>
+            <url>https://api.bintray.com/maven/tamasgyorfi/maven/IntegrationTestFramework/;publish=1</url>
+        </repository>
+    </distributionManagement>
+
 </project>
