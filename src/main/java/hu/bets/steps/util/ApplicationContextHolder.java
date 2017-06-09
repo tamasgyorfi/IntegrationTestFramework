@@ -17,4 +17,8 @@ public class ApplicationContextHolder {
         return context.getBean(classType);
     }
 
+    public static <T> T getBean(Class<T> classType, String name) {
+        return context.getBean(classType, name);
+    }
+
 }

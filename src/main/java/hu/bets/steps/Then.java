@@ -6,9 +6,8 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import hu.bets.common.util.EnvironmentVarResolver;
-import org.bson.Document;
 import hu.bets.steps.util.ApplicationContextHolder;
+import org.bson.Document;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static hu.bets.steps.util.Constants.AGGREGATE_RESPONSE_ROUTING_KEY;
 import static hu.bets.steps.util.Constants.EXCHANGE_NAME;
 import static org.junit.Assert.*;
 
@@ -35,12 +33,11 @@ public class Then {
         assertNotNull(collection.find(query).first());
     }
 
-    public static List<byte[]> iExpectOutgoingMessages(String queueName, long timeoutSeconds) throws Exception {
+    public static List<byte[]> iExpectOutgoingMessages(String queueName, String routingKey, long timeoutSeconds) throws Exception {
         Channel channel = ApplicationContextHolder.getBean(Channel.class);
-        TestConsumer consumer = new TestConsumer(channel);
+        TestConsumer consumer = new TestConsumer(channel, routingKey);
 
-        channel.queueBind(queueName, EXCHANGE_NAME,
-                AGGREGATE_RESPONSE_ROUTING_KEY);
+        channel.queueBind(queueName, EXCHANGE_NAME, routingKey);
         channel.basicConsume(queueName, true, consumer);
 
         TimeUnit.SECONDS.sleep(timeoutSeconds);
@@ -50,10 +47,12 @@ public class Then {
 
     static class TestConsumer extends DefaultConsumer {
 
+        private final String routingKey;
         private List<byte[]> messages = new ArrayList<>();
 
-        public TestConsumer(Channel channel) {
+        public TestConsumer(Channel channel, String routingKey) {
             super(channel);
+            this.routingKey = routingKey;
         }
 
         @Override

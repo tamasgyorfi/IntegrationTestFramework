@@ -51,8 +51,8 @@ public class Given {
     private static void setupQueues() throws Exception {
         Channel channel = ApplicationContextHolder.getBean(Channel.class);
 
-        channel.queueDeclare(AGGREGATE_REQUEST_QUEUE_NAME, true, false, false, null);
-        channel.queueDeclare(AGGREGATE_REPLY_QUEUE_NAME, true, false, false, null);
+        channel.queueDeclare("BETS_TO_SCORES", true, false, false, null);
+        channel.queueDeclare("SCORES_TO_BETS", true, false, false, null);
     }
 
     private static void setupBroker() {
@@ -90,11 +90,5 @@ public class Given {
         properties.setProperty("PORT", PORT);
 
         properties.setProperty("CLOUDAMQP_URL", CLOUDAMQP_URL);
-        properties.setProperty("AGGREGATE_REQUEST_QUEUE_NAME", AGGREGATE_REQUEST_QUEUE_NAME);
-        properties.setProperty("AGGREGATE_REPLY_QUEUE_NAME", AGGREGATE_REPLY_QUEUE_NAME);
-        properties.setProperty("EXCHANGE_NAME", EXCHANGE_NAME);
-        properties.setProperty("AGGREGATE_REQUEST_ROUTING_KEY", AGGREGATE_REQUEST_ROUTING_KEY);
-        properties.setProperty("AGGREGATE_RESPONSE_ROUTING_KEY", AGGREGATE_RESPONSE_ROUTING_KEY);
-
     }
 }
