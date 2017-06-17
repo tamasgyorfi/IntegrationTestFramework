@@ -33,12 +33,11 @@ public class Given {
     }
 
     public static void environmentIsShutDown() throws Exception {
-        ApplicationContextHolder.getBean(MongoCollection.class).drop();
-        ApplicationContextHolder.stopApplicationContext();
 
         BROKER.shutdown();
         webServer.stop();
 
+        ApplicationContextHolder.stopApplicationContext();
         TimeUnit.SECONDS.sleep(1);
     }
 
